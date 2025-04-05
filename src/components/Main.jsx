@@ -17,7 +17,14 @@ function Main() {
   //   console.log(API_KEY); // Ensure it loads correctly
 
   async function addRecipe() {
-    const markdownRecipe = await getRecipeFromChefClaude(ingredient);
+    // const markdownRecipe = await getRecipeFromChefClaude(ingredient);
+    const markdownRecipe = await fetch("/.netlify/functions/getRecipe", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ ingredients: ingredientArray }),
+    });
     setRecipe(markdownRecipe);
   }
 
