@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import ClaudeRecipe from "./ClaudeRecipe";
 import IngredientsList from "./IngredientsList";
-import { getRecipeFromMistral } from "../ai";
+import { getRecipeFromChefClaude } from "../ai";
 
 function Main() {
   const [ingredient, setIngredients] = useState([]);
@@ -17,7 +17,7 @@ function Main() {
   //   console.log(API_KEY); // Ensure it loads correctly
 
   async function addRecipe() {
-    const markdownRecipe = await getRecipeFromMistral(ingredient);
+    const markdownRecipe = await getRecipeFromChefClaude(ingredient);
     setRecipe(markdownRecipe);
   }
 
